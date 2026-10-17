@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wassertemperaturen in Bayern</title>
+  <meta name="description" content="Aktuelle Wassertemperaturen bayerischer Seen und Flüsse auf einer Karte.">
+  <link rel="stylesheet" href="vendor/leaflet.css">
+  <link rel="stylesheet" href="vendor/uPlot.min.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Wassertemperaturen <span>Bayern</span></h1>
+    <p class="stand" id="stand">Lade Daten …</p>
+  </header>
+  <main class="layout">
+    <div id="map" aria-label="Karte der Messstellen"></div>
+    <aside class="panel">
+      <div class="filter" role="group" aria-label="Gewässertyp">
+        <button type="button" data-kind="all" aria-pressed="true">Alle</button>
+        <button type="button" data-kind="lake" aria-pressed="false">Seen</button>
+        <button type="button" data-kind="river" aria-pressed="false">Flüsse</button>
+      </div>
+      <input type="search" id="search" class="search" placeholder="Messstelle suchen …"
+             aria-label="Messstelle suchen" autocomplete="off">
+      <h2 id="list-heading">Messstellen</h2>
+      <ol class="stations" id="stations"></ol>
+      <div class="legend" id="legend"></div>
+    </aside>
+  </main>
+  <div class="banner" id="error" role="alert" hidden></div>
+  <div class="banner notice" id="notice" role="status" hidden></div>
+  <footer class="footer">
+    Datenquelle: Bayerisches Landesamt für Umwelt,
+    <a href="https://www.lfu.bayern.de">www.lfu.bayern.de</a>
+    (<a href="https://www.gkd.bayern.de/">Gewässerkundlicher Dienst</a>,
+    <a href="https://creativecommons.org/licenses/by/4.0/deed.de">CC BY 4.0</a>) · ohne Gewähr
+  </footer>
+  <script src="vendor/leaflet.js"></script>
+  <script src="vendor/uPlot.min.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
